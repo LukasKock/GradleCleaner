@@ -20,12 +20,14 @@ namespace GradleCleaner
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ofg = new OpenFileDialog();
             ofg.ShowDialog();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ofg = new OpenFileDialog();
+            //ofg = new OpenFileDialog();
+
         }
     }
 }
