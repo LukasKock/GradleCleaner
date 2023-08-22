@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+using System.Diagnostics.Eventing.Reader;
 
 namespace GradleCleaner
 {
@@ -27,16 +30,33 @@ namespace GradleCleaner
  
             using ( openFileDialog = new OpenFileDialog()) {
                 //openFileDialog.InitialDirectory = Application.StartupPath;
-                openFileDialog.InitialDirectory = "C:\\Users\\LukasKock\\Desktop\\teste";
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2; 
+                openFileDialog.InitialDirectory = @"USERPROFILE\\Desktop";
+                //openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                //openFileDialog.FilterIndex = 2; 
                 openFileDialog.Multiselect = true;
                 openFileDialog.RestoreDirectory = true;
-                if (openFileDialog.ShowDialog() == DialogResult.OK) { 
+
+                //String strCmdLine = "C:\\Users\\LukasKock\\Desktop\\teste\\filetest.txt";
+
+                //try {
+                //    Process myProcess = Process.Start("notepad++.exe",strCmdLine);
+                //    myProcess.Close();
+                //}
+                //catch  {
+                //    throw new Exception();
+                //}
+
+
+
+
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
                     filePath = openFileDialog.FileName;
-                    
+
                     var fileStream = openFileDialog.OpenFile();
-                    using (StreamReader reader = new StreamReader(fileStream)) {
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
                         fileContent = reader.ReadToEnd();
                     }
                 }
@@ -47,7 +67,6 @@ namespace GradleCleaner
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //ofg = new OpenFileDialog();
 
         }
     }
