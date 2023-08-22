@@ -29,15 +29,17 @@ namespace GradleCleaner
         {
  
             using ( openFileDialog = new OpenFileDialog()) {
-                //openFileDialog.InitialDirectory = Application.StartupPath;
-                openFileDialog.InitialDirectory = @"USERPROFILE\\Desktop";
+
+                openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
+                    Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
                 //openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                 //openFileDialog.FilterIndex = 2; 
                 openFileDialog.Multiselect = true;
                 openFileDialog.RestoreDirectory = true;
 
                 //String strCmdLine = "C:\\Users\\LukasKock\\Desktop\\teste\\filetest.txt";
-
+                //String strCmdLine = openFileDialog.FileName;
+                
                 //try {
                 //    Process myProcess = Process.Start("notepad++.exe",strCmdLine);
                 //    myProcess.Close();
