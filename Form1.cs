@@ -28,7 +28,13 @@ namespace GradleCleaner
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
  
-            using ( openFileDialog = new OpenFileDialog()) {
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            String output;
+            using (openFileDialog = new OpenFileDialog())
+            {
 
                 openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
@@ -41,39 +47,29 @@ namespace GradleCleaner
                 //    "WIfiList-teste\\gradlew.bat";
 
                 //String strCmdLine = openFileDialog.FileName;
-                
-
-
 
                 String strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
                 "WIfiList-teste\\gradlew.bat";
-              
-
 
                 try
                 {
-                    //Process myProcess = Process.Start(strCmdLine);
                     var myProcess = new Process();
                     myProcess.StartInfo.FileName = strCmdLine;
                     myProcess.StartInfo.UseShellExecute = false;
                     myProcess.StartInfo.RedirectStandardError = true;
                     myProcess.Start();
 
-                    string output = myProcess.StandardError.ReadToEnd();
+                    output = myProcess.StandardError.ReadToEnd().ToString();
                     myProcess.WaitForExit();
 
-                    //Console.WriteLine("\nError Stream: ", output);
-                    MessageBox.Show(output, "legenda",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                    //myProcess.Close();
+                    Console.WriteLine("\nError Stream: ", output);
+                    Console.WriteLine();
+                    myProcess.Close();
                 }
                 catch
                 {
                     throw new Exception();
                 }
-
-
-
-
 
                 //if (openFileDialog.ShowDialog() == DialogResult.OK)
                 //{
@@ -88,10 +84,8 @@ namespace GradleCleaner
             }
             //MessageBox.Show(fileContent, "File at path: " + filePath,
             //    MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+            MessageBox.Show(output, "legenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
         }
     }
