@@ -25,7 +25,7 @@ namespace GradleCleaner
             InitializeComponent();
         }
 
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e, Process myProcess)
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
  
             using ( openFileDialog = new OpenFileDialog()) {
@@ -47,20 +47,23 @@ namespace GradleCleaner
 
                 String strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
                 "WIfiList-teste\\gradlew.bat";
-                //var p = new Process();
-                //p.StartInfo.UseShellExecute = false;
-                //p.StartInfo.RedirectStandardError = true;
-                ////p.StartInfo.FileName = "Write500Lines.exe";
-                //p.Start();
-
+              
 
 
                 try
                 {
-                    Process myProcess = Process.Start(strCmdLine);
-                    //StreamReader myStreamReader = myProcess.StandardError; //da erro
-                    //Console.WriteLine(myStreamReader.ReadLine());
-                    myProcess.Close();
+                    //Process myProcess = Process.Start(strCmdLine);
+                    var myProcess = new Process();
+                    myProcess.StartInfo.FileName = strCmdLine;
+                    myProcess.StartInfo.UseShellExecute = false;
+                    myProcess.StartInfo.RedirectStandardError = true;
+                    myProcess.Start();
+
+                    string output = myProcess.StandardError.ReadToEnd();
+                    myProcess.WaitForExit();
+
+                    Console.WriteLine("\nError Stream: ", output);
+                    //myProcess.Close();
                 }
                 catch
                 {
