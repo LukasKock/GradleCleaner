@@ -62,7 +62,8 @@ namespace GradleCleaner
                     string output = myProcess.StandardError.ReadToEnd();
                     myProcess.WaitForExit();
 
-                    Console.WriteLine("\nError Stream: ", output);
+                    //Console.WriteLine("\nError Stream: ", output);
+                    MessageBox.Show(output, "legenda",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     //myProcess.Close();
                 }
                 catch
@@ -85,7 +86,7 @@ namespace GradleCleaner
                 //    }
                 //}
             }
-            //MessageBox.Show(fileContent, "File at path: " + filePath, 
+            //MessageBox.Show(fileContent, "File at path: " + filePath,
             //    MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
