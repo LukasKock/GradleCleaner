@@ -25,7 +25,7 @@ namespace GradleCleaner
             InitializeComponent();
         }
 
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e, Process myProcess)
         {
  
             using ( openFileDialog = new OpenFileDialog()) {
@@ -37,34 +37,53 @@ namespace GradleCleaner
                 openFileDialog.Multiselect = true;
                 openFileDialog.RestoreDirectory = true;
 
-                //String strCmdLine = "C:\\Users\\LukasKock\\Desktop\\teste\\filetest.txt";
+                //String strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
+                //    "WIfiList-teste\\gradlew.bat";
+
                 //String strCmdLine = openFileDialog.FileName;
                 
-                //try {
-                //    Process myProcess = Process.Start("notepad++.exe",strCmdLine);
-                //    myProcess.Close();
-                //}
-                //catch  {
-                //    throw new Exception();
-                //}
 
 
 
+                String strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
+                "WIfiList-teste\\gradlew.bat";
+                //var p = new Process();
+                //p.StartInfo.UseShellExecute = false;
+                //p.StartInfo.RedirectStandardError = true;
+                ////p.StartInfo.FileName = "Write500Lines.exe";
+                //p.Start();
 
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+
+                try
                 {
-                    filePath = openFileDialog.FileName;
-
-                    var fileStream = openFileDialog.OpenFile();
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        fileContent = reader.ReadToEnd();
-                    }
+                    Process myProcess = Process.Start(strCmdLine);
+                    //StreamReader myStreamReader = myProcess.StandardError; //da erro
+                    //Console.WriteLine(myStreamReader.ReadLine());
+                    myProcess.Close();
                 }
+                catch
+                {
+                    throw new Exception();
+                }
+
+
+
+
+
+                //if (openFileDialog.ShowDialog() == DialogResult.OK)
+                //{
+                //    filePath = openFileDialog.FileName;
+
+                //    var fileStream = openFileDialog.OpenFile();
+                //    using (StreamReader reader = new StreamReader(fileStream))
+                //    {
+                //        fileContent = reader.ReadToEnd();
+                //    }
+                //}
             }
-            MessageBox.Show(fileContent, "File at path: " + filePath, 
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show(fileContent, "File at path: " + filePath, 
+            //    MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Form1_Load(object sender, EventArgs e)
