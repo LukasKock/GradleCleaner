@@ -44,11 +44,11 @@ namespace GradleCleaner
                 //String strCmdLine = openFileDialog.FileName;
 
                 String strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
-                "WIfiList-teste\\gradlew.bat clean";
+                "WIfiList-teste\\gradlew.bat";
 
                 try
                 {
-                    var myProcess = new Process();
+                    Process myProcess = new Process();
                     myProcess.StartInfo.FileName = strCmdLine;
                     myProcess.StartInfo.UseShellExecute = false;
                     myProcess.StartInfo.RedirectStandardError = true;
