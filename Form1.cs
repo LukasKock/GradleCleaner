@@ -25,7 +25,7 @@ namespace GradleCleaner
             InitializeComponent();
         }
 
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e, Process myProcess)
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
  
             using ( openFileDialog = new OpenFileDialog()) {
@@ -57,9 +57,9 @@ namespace GradleCleaner
 
                 try
                 {
+                    //Process myProcess = Process.Start(strCmdLine, "--clean");
                     Process myProcess = Process.Start(strCmdLine);
-                    //StreamReader myStreamReader = myProcess.StandardError; //da erro
-                    //Console.WriteLine(myStreamReader.ReadLine());
+                    myProcess.WaitForExit();
                     myProcess.Close();
                 }
                 catch
