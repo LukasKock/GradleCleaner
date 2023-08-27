@@ -28,6 +28,7 @@ namespace GradleCleaner
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String output;
+            String eOut;
             using (openFileDialog = new OpenFileDialog())
             {
 
@@ -49,16 +50,22 @@ namespace GradleCleaner
                 try
                 {
                     Process myProcess = new Process();
-                    myProcess.StartInfo.FileName = strCmdLine;
+                    //myProcess.StartInfo.FileName = strCmdLine;
                     myProcess.StartInfo.UseShellExecute = false;
                     myProcess.StartInfo.RedirectStandardError = true;
+                    //myProcess.ErrorDataReceived += new DataReceivedEventHandler((sender1, e1) => { 
+                    //    eOut = e1.Data;
+                    //});
+                    myProcess.StartInfo.FileName = strCmdLine;
                     myProcess.Start();
-
-                    output = myProcess.StandardError.ReadToEnd().ToString();
+                    myProcess.BeginErrorReadLine();
+                    //output = myProcess.StandardOutput.ReadToEnd(); //parece que sai do processo
                     myProcess.WaitForExit();
 
-                    Console.WriteLine("\nError Stream: ", output);
-                    Console.WriteLine();
+
+                    //Console.WriteLine("\nError Stream: ", output);
+                   //Console.WriteLine("\nError Stream: ", eOut);
+
                     myProcess.Close();
                 }
                 catch
@@ -79,7 +86,7 @@ namespace GradleCleaner
             }
             //MessageBox.Show(fileContent, "File at path: " + filePath,
             //    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            MessageBox.Show(output, "legenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show(output, "legenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
