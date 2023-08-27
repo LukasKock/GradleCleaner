@@ -27,11 +27,6 @@ namespace GradleCleaner
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
- 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
             String output;
             using (openFileDialog = new OpenFileDialog())
             {
@@ -49,7 +44,7 @@ namespace GradleCleaner
                 //String strCmdLine = openFileDialog.FileName;
 
                 String strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
-                "WIfiList-teste\\gradlew.bat";
+                "WIfiList-teste\\gradlew.bat clean";
 
                 try
                 {
@@ -86,6 +81,11 @@ namespace GradleCleaner
             //    MessageBoxButtons.OK, MessageBoxIcon.Error);
             MessageBox.Show(output, "legenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
 
         }
     }
