@@ -29,6 +29,10 @@ namespace GradleCleaner
         {
             String output;
             String eOut;
+
+            string line;
+            
+
             using (openFileDialog = new OpenFileDialog())
             {
 
@@ -44,34 +48,48 @@ namespace GradleCleaner
 
                 //String strCmdLine = openFileDialog.FileName;
 
-                String strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
+                string strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
                 "WIfiList-teste\\gradlew.bat";
+                Process proc = new Process();
+                proc.StartInfo.FileName = strCmdLine;
+                proc.StartInfo.Arguments = "";
+                proc.StartInfo.UseShellExecute = false;
+                proc.StartInfo.RedirectStandardOutput = true;
+                proc.StartInfo.CreateNoWindow = true;
+                      
 
-                try
+
+
+                proc.Start();
+                while (!proc.StandardOutput.EndOfStream)
                 {
-                    Process myProcess = new Process();
-                    //myProcess.StartInfo.FileName = strCmdLine;
-                    myProcess.StartInfo.UseShellExecute = false;
-                    myProcess.StartInfo.RedirectStandardError = true;
-                    //myProcess.ErrorDataReceived += new DataReceivedEventHandler((sender1, e1) => { 
-                    //    eOut = e1.Data;
-                    //});
-                    myProcess.StartInfo.FileName = strCmdLine;
-                    myProcess.Start();
-                    myProcess.BeginErrorReadLine();
-                    //output = myProcess.StandardOutput.ReadToEnd(); //parece que sai do processo
-                    myProcess.WaitForExit();
-
-
-                    //Console.WriteLine("\nError Stream: ", output);
-                   //Console.WriteLine("\nError Stream: ", eOut);
-
-                    myProcess.Close();
+                    line = proc.StandardOutput.ReadLine();
+                    Console.WriteLine(line);
                 }
-                catch
-                {
-                    throw new Exception();
-                }
+
+                /*
+                 Process proc = new Process
+{
+    StartInfo = new ProcessStartInfo
+    {
+        FileName = strCmdLine,
+        Arguments = "",
+        UseShellExecute = false,
+        RedirectStandardOutput = true,
+        CreateNoWindow = true
+    }
+};
+
+
+proc.Start();
+while (!proc.StandardOutput.EndOfStream)
+{
+    line = proc.StandardOutput.ReadLine();
+    Console.WriteLine(line);
+}
+
+                 */
+
 
                 //if (openFileDialog.ShowDialog() == DialogResult.OK)
                 //{
@@ -86,7 +104,7 @@ namespace GradleCleaner
             }
             //MessageBox.Show(fileContent, "File at path: " + filePath,
             //    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //MessageBox.Show(output, "legenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show(line, "legenda", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
