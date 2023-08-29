@@ -56,6 +56,8 @@ namespace GradleCleaner
                 {
                     //Process myProcess = Process.Start(strCmdLine);
                     var myProcess = new Process();
+                    myProcess.StartInfo.WorkingDirectory = "C:\\Users\\LukasKock\\" +
+                        "AndroidStudioProjects\\WIfiList-teste\\";
                     myProcess.StartInfo.FileName = strCmdLine;
                     myProcess.StartInfo.Arguments = "";
                     myProcess.StartInfo.UseShellExecute = false;
