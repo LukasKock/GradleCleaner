@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics.Eventing.Reader;
+using System.Xml;
 
 namespace GradleCleaner
 {
@@ -24,6 +25,7 @@ namespace GradleCleaner
         public Form1()
         {
             InitializeComponent();
+            textBox1.Enabled = false;
         }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace GradleCleaner
                 proc.StartInfo.WorkingDirectory = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
                 "WIfiList-teste\\";
                 proc.StartInfo.FileName = strCmdLine;
-                proc.StartInfo.Arguments = "clean";
+                proc.StartInfo.Arguments = "build";
                 proc.StartInfo.UseShellExecute = false;
                 proc.StartInfo.RedirectStandardOutput = true;
                 proc.StartInfo.CreateNoWindow = true;
@@ -67,33 +69,16 @@ namespace GradleCleaner
                 while (!proc.StandardOutput.EndOfStream)
                 {
                     line = proc.StandardOutput.ReadLine();
-                    textBox1.WordWrap = true;
-                    textBox1.Text = line;
+                    textBox1.Enabled = true;
+                    textBox1.ScrollBars = ScrollBars.Both;
+                    textBox1.AppendText(line);
+                    textBox1.AppendText(Environment.NewLine);
+                    textBox1.Multiline = true;
+
                     Console.WriteLine(line);
                 }
 
-                /*
-                 Process proc = new Process
-{
-    StartInfo = new ProcessStartInfo
-    {
-        FileName = strCmdLine,
-        Arguments = "",
-        UseShellExecute = false,
-        RedirectStandardOutput = true,
-        CreateNoWindow = true
-    }
-};
 
-
-proc.Start();
-while (!proc.StandardOutput.EndOfStream)
-{
-    line = proc.StandardOutput.ReadLine();
-    Console.WriteLine(line);
-}
-
-                 */
 
 
                 //if (openFileDialog.ShowDialog() == DialogResult.OK)
