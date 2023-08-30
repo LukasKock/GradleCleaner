@@ -13,6 +13,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics.Eventing.Reader;
 using System.Xml;
+using System.ComponentModel.Design;
 
 namespace GradleCleaner
 {
@@ -22,10 +23,17 @@ namespace GradleCleaner
         private String fileContent;
         private String filePath;
 
+
         public Form1()
         {
             InitializeComponent();
             textBox1.Enabled = false;
+
+            //int formWidth = this.Width;
+            //if (formWidth < textBox1.Width + 100)
+            //{
+            //    textBox1.Width = formWidth;
+            //}
         }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
