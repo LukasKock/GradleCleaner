@@ -41,14 +41,10 @@ namespace GradleCleaner
 
                 openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
-                //openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                //openFileDialog.FilterIndex = 2; 
                 openFileDialog.Multiselect = true;
                 openFileDialog.RestoreDirectory = true;
 
-                //String strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
-                //    "WIfiList-teste\\gradlew.bat";
-
+                
                 //String strCmdLine = openFileDialog.FileName;
 
                 string strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
