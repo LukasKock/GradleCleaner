@@ -51,8 +51,10 @@ namespace GradleCleaner
                 string strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
                 "WIfiList-teste\\gradlew.bat";
                 Process proc = new Process();
+                proc.StartInfo.WorkingDirectory = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
+                "WIfiList-teste\\";
                 proc.StartInfo.FileName = strCmdLine;
-                proc.StartInfo.Arguments = "";
+                proc.StartInfo.Arguments = "build";
                 proc.StartInfo.UseShellExecute = false;
                 proc.StartInfo.RedirectStandardOutput = true;
                 proc.StartInfo.CreateNoWindow = true;
