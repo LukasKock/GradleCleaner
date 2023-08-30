@@ -20,6 +20,7 @@ namespace GradleCleaner
         private OpenFileDialog openFileDialog;
         private String fileContent;
         private String filePath;
+
         public Form1()
         {
             InitializeComponent();
@@ -54,7 +55,7 @@ namespace GradleCleaner
                 proc.StartInfo.WorkingDirectory = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
                 "WIfiList-teste\\";
                 proc.StartInfo.FileName = strCmdLine;
-                proc.StartInfo.Arguments = "build";
+                proc.StartInfo.Arguments = "clean";
                 proc.StartInfo.UseShellExecute = false;
                 proc.StartInfo.RedirectStandardOutput = true;
                 proc.StartInfo.CreateNoWindow = true;
@@ -66,6 +67,8 @@ namespace GradleCleaner
                 while (!proc.StandardOutput.EndOfStream)
                 {
                     line = proc.StandardOutput.ReadLine();
+                    textBox1.WordWrap = true;
+                    textBox1.Text = line;
                     Console.WriteLine(line);
                 }
 
@@ -115,5 +118,7 @@ while (!proc.StandardOutput.EndOfStream)
             
 
         }
+
+       
     }
 }
