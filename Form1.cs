@@ -38,63 +38,62 @@ namespace GradleCleaner
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String output;
-            String eOut;
-
+          
             string line;
             
 
             using (openFileDialog = new OpenFileDialog())
             {
-
                 openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
-                    Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
+                   Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
                 openFileDialog.Multiselect = true;
                 openFileDialog.RestoreDirectory = true;
-
-                
-                //String strCmdLine = openFileDialog.FileName;
-
-                string strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
-                "WIfiList-teste\\gradlew.bat";
-                Process proc = new Process();
-                proc.StartInfo.WorkingDirectory = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
-                "WIfiList-teste\\";
-                proc.StartInfo.FileName = strCmdLine;
-                proc.StartInfo.Arguments = "build";
-                proc.StartInfo.UseShellExecute = false;
-                proc.StartInfo.RedirectStandardOutput = true;
-                proc.StartInfo.CreateNoWindow = true;
-                      
-
-
-
-                proc.Start();
-                while (!proc.StandardOutput.EndOfStream)
+                openFileDialog.
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    line = proc.StandardOutput.ReadLine();
-                    textBox1.Enabled = true;
-                    textBox1.ScrollBars = ScrollBars.Both;
-                    textBox1.AppendText(line);
-                    textBox1.AppendText(Environment.NewLine);
-                    textBox1.Multiline = true;
+                    filePath = openFileDialog.FileName;
 
-                    Console.WriteLine(line);
+                   
+
+
+                    //String strCmdLine = openFileDialog.FileName;
+
+                    string strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
+                    "WIfiList-teste\\gradlew.bat";
+                    Process proc = new Process();
+                    proc.StartInfo.WorkingDirectory = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
+                    "WIfiList-teste\\";
+                    proc.StartInfo.FileName = strCmdLine;
+                    proc.StartInfo.Arguments = "build";
+                    proc.StartInfo.UseShellExecute = false;
+                    proc.StartInfo.RedirectStandardOutput = true;
+                    proc.StartInfo.CreateNoWindow = true;
+
+
+
+
+                    proc.Start();
+                    while (!proc.StandardOutput.EndOfStream)
+                    {
+                        line = proc.StandardOutput.ReadLine();
+                        textBox1.Enabled = true;
+                        textBox1.ScrollBars = ScrollBars.Both;
+                        textBox1.AppendText(line);
+                        textBox1.AppendText(Environment.NewLine);
+                        textBox1.Multiline = true;
+
+                        Console.WriteLine(line);
+                    }
+
+
+
+
+                    //var fileStream = openFileDialog.OpenFile();
+                    //using (StreamReader reader = new StreamReader(fileStream))
+                    //{
+                    //    fileContent = reader.ReadToEnd();
+                    //}
                 }
-
-
-
-
-                //if (openFileDialog.ShowDialog() == DialogResult.OK)
-                //{
-                //    filePath = openFileDialog.FileName;
-
-                //    var fileStream = openFileDialog.OpenFile();
-                //    using (StreamReader reader = new StreamReader(fileStream))
-                //    {
-                //        fileContent = reader.ReadToEnd();
-                //    }
-                //}
             }
             //MessageBox.Show(fileContent, "File at path: " + filePath,
             //    MessageBoxButtons.OK, MessageBoxIcon.Error);
