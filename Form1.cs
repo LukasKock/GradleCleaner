@@ -48,7 +48,6 @@ namespace GradleCleaner
                    Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
                 openFileDialog.Multiselect = true;
                 openFileDialog.RestoreDirectory = true;
-                openFileDialog.
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
