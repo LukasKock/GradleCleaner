@@ -40,23 +40,22 @@ namespace GradleCleaner
         {
           
             string line;
-            
 
-            using (var fdb = new FolderBrowserDialog())
+            using (openFileDialog = new OpenFileDialog())
+//            using (var fdb = new FolderBrowserDialog())
             {
-                //openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
-                //   Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
-                //openFileDialog.Multiselect = true;
-                //openFileDialog.RestoreDirectory = true;
-                DialogResult result = fdb.ShowDialog();
-                
-                //if (openFileDialog.ShowDialog() == DialogResult.OK)
-                if (result == DialogResult.OK && !string.IsNullOrEmpty(fdb.SelectedPath))
-                {
-                    //filePath = openFileDialog.FileName;
+                openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
+                   Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
+                openFileDialog.Multiselect = true;
+                openFileDialog.RestoreDirectory = true;
+                //DialogResult result = fdb.ShowDialog();
 
-                    string[] paths = Directory.GetDirectories(fdb.SelectedPath);
-                    Console.WriteLine(paths);
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                //                if (result == DialogResult.OK && !string.IsNullOrEmpty(fdb.SelectedPath))
+                {
+                    filePath = openFileDialog.FileName;
+                    //string[] paths = Directory.GetDirectories(fdb.SelectedPath);
+                    //Console.WriteLine(paths);
 
 
                     //String strCmdLine = openFileDialog.FileName;
