@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Diagnostics.Eventing.Reader;
 using System.Xml;
 using System.ComponentModel.Design;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace GradleCleaner
 {
@@ -22,6 +23,7 @@ namespace GradleCleaner
         private OpenFileDialog openFileDialog;
         private String fileContent;
         private String filePath;
+        private String folderPath;
 
 
         public Form1()
@@ -41,22 +43,33 @@ namespace GradleCleaner
           
             string line;
 
-            using (openFileDialog = new OpenFileDialog())
-//            using (var fdb = new FolderBrowserDialog())
+            //using (openFileDialog = new OpenFileDialog())
+            //            using (var fdb = new FolderBrowserDialog())
+            using (CommonOpenFileDialog dialog = new CommonOpenFileDialog())
             {
-                openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
+                //openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
+                //   Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
+                //openFileDialog.Multiselect = true;
+                dialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
                    Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
-                openFileDialog.Multiselect = true;
-                openFileDialog.RestoreDirectory = true;
+                dialog.Multiselect = true;
+                dialog.IsFolderPicker = true;
+                //openFileDialog.RestoreDirectory = true;
                 //DialogResult result = fdb.ShowDialog();
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                //                if (result == DialogResult.OK && !string.IsNullOrEmpty(fdb.SelectedPath))
-                {
-                    filePath = openFileDialog.FileName;
-                    string folderpathtest = Path.GetDirectoryName(filePath);
-                    Console.WriteLine(folderpathtest);
 
+
+                //if (openFileDialog.ShowDialog() == DialogResult.OK)
+                //if (result == DialogResult.OK && !string.IsNullOrEmpty(fdb.SelectedPath))
+                if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    //filePath = openFileDialog.FileName;
+                    //string folderpathtest = Path.GetDirectoryName(filePath);
+                    //Console.WriteLine(folderpathtest);
+                    
+                    folderPath = dialog.FileName;
+                    string folderpathtest = Path.GetDirectoryName(folderPath);
+                    Console.WriteLine(folderPath);
 
                     //string[] paths = Directory.GetDirectories(fdb.SelectedPath);
                     //Console.WriteLine(paths);
