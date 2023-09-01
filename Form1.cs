@@ -54,6 +54,10 @@ namespace GradleCleaner
                 //                if (result == DialogResult.OK && !string.IsNullOrEmpty(fdb.SelectedPath))
                 {
                     filePath = openFileDialog.FileName;
+                    string folderpathtest = Path.GetDirectoryName(filePath);
+                    Console.WriteLine(folderpathtest);
+
+
                     //string[] paths = Directory.GetDirectories(fdb.SelectedPath);
                     //Console.WriteLine(paths);
 
