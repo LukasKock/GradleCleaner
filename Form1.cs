@@ -68,7 +68,6 @@ namespace GradleCleaner
                     //Console.WriteLine(folderpathtest);
                     
                     folderPath = dialog.FileName;
-                    string folderpathtest = Path.GetDirectoryName(folderPath);
                     Console.WriteLine(folderPath);
 
                     //string[] paths = Directory.GetDirectories(fdb.SelectedPath);
