@@ -38,10 +38,8 @@ namespace GradleCleaner
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
           
-            string line;
+            string outputLine;
 
-            //using (openFileDialog = new OpenFileDialog())
-            //            using (var fdb = new FolderBrowserDialog())
             using (CommonOpenFileDialog dialog = new CommonOpenFileDialog())
             {
                 dialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
@@ -76,14 +74,14 @@ namespace GradleCleaner
                     proc.Start();
                     while (!proc.StandardOutput.EndOfStream)
                     {
-                        line = proc.StandardOutput.ReadLine();
+                        outputLine = proc.StandardOutput.ReadLine();
                         textBox1.Enabled = true;
                         textBox1.ScrollBars = ScrollBars.Both;
-                        textBox1.AppendText(line);
+                        textBox1.AppendText(outputLine);
                         textBox1.AppendText(Environment.NewLine);
                         textBox1.Multiline = true;
 
-                        Console.WriteLine(line);
+                        Console.WriteLine(outputLine);
                     }
 
                 }
