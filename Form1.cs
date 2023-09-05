@@ -86,14 +86,6 @@ namespace GradleCleaner
                         Console.WriteLine(line);
                     }
 
-
-
-
-                    //var fileStream = openFileDialog.OpenFile();
-                    //using (StreamReader reader = new StreamReader(fileStream))
-                    //{
-                    //    fileContent = reader.ReadToEnd();
-                    //}
                 }
             }
             //MessageBox.Show(fileContent, "File at path: " + filePath,
