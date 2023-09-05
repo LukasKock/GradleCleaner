@@ -78,6 +78,8 @@ namespace GradleCleaner
                             
                             Console.WriteLine(outputLine);
                         }
+                        proc.WaitForExit();
+                        proc.Close();
 
                         textBox1.AppendText(Environment.NewLine);
 
