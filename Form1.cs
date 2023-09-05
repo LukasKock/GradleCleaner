@@ -20,7 +20,6 @@ namespace GradleCleaner
 {
     public partial class Form1 : Form
     {
-        private String folderPath;
 
 
         public Form1()
@@ -49,9 +48,41 @@ namespace GradleCleaner
 
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    
-                    folderPath = dialog.FileName;
-                    Console.WriteLine(folderPath);
+                    textBox1.Enabled = true;
+                    textBox1.Multiline = true;
+                    textBox1.ScrollBars = ScrollBars.Both;
+
+                    String Gradle = "\\gradlew.bat";
+                    foreach (String folderPath in dialog.FileNames)
+                    {
+
+                        //folderPath = dialog.FileName;
+                        Console.WriteLine(folderPath);
+                        Process proc = new Process();
+                        proc.StartInfo.WorkingDirectory = folderPath;
+                        proc.StartInfo.FileName = folderPath + Gradle;
+                        proc.StartInfo.Arguments = "clean";
+                        proc.StartInfo.UseShellExecute = false;
+                        proc.StartInfo.RedirectStandardOutput = true;
+                        proc.StartInfo.CreateNoWindow = true;
+
+
+
+
+                        proc.Start();
+                        while (!proc.StandardOutput.EndOfStream)
+                        {
+                            outputLine = proc.StandardOutput.ReadLine();
+                            textBox1.AppendText(outputLine);
+                            textBox1.AppendText(Environment.NewLine);
+                            
+                            Console.WriteLine(outputLine);
+                        }
+
+                        textBox1.AppendText(Environment.NewLine);
+
+
+                    }
 
                     //string[] paths = Directory.GetDirectories(fdb.SelectedPath);
                     //Console.WriteLine(paths);
@@ -59,30 +90,6 @@ namespace GradleCleaner
 
                     //string strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
                     //"WIfiList-teste\\gradlew.bat";
-                    String Gradle = "\\gradlew.bat";
-                    Process proc = new Process();
-                    proc.StartInfo.WorkingDirectory = folderPath;
-                    proc.StartInfo.FileName = folderPath + Gradle;
-                    proc.StartInfo.Arguments = "clean";
-                    proc.StartInfo.UseShellExecute = false;
-                    proc.StartInfo.RedirectStandardOutput = true;
-                    proc.StartInfo.CreateNoWindow = true;
-
-
-
-
-                    proc.Start();
-                    while (!proc.StandardOutput.EndOfStream)
-                    {
-                        outputLine = proc.StandardOutput.ReadLine();
-                        textBox1.Enabled = true;
-                        textBox1.ScrollBars = ScrollBars.Both;
-                        textBox1.AppendText(outputLine);
-                        textBox1.AppendText(Environment.NewLine);
-                        textBox1.Multiline = true;
-
-                        Console.WriteLine(outputLine);
-                    }
 
                 }
             }
