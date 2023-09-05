@@ -20,9 +20,6 @@ namespace GradleCleaner
 {
     public partial class Form1 : Form
     {
-        private OpenFileDialog openFileDialog;
-        private String fileContent;
-        private String filePath;
         private String folderPath;
 
 
@@ -47,25 +44,13 @@ namespace GradleCleaner
             //            using (var fdb = new FolderBrowserDialog())
             using (CommonOpenFileDialog dialog = new CommonOpenFileDialog())
             {
-                //openFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
-                //   Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
-                //openFileDialog.Multiselect = true;
                 dialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(
                    Environment.SpecialFolder.UserProfile), "AndroidStudioProjects");
                 dialog.Multiselect = true;
                 dialog.IsFolderPicker = true;
-                //openFileDialog.RestoreDirectory = true;
-                //DialogResult result = fdb.ShowDialog();
 
-
-
-                //if (openFileDialog.ShowDialog() == DialogResult.OK)
-                //if (result == DialogResult.OK && !string.IsNullOrEmpty(fdb.SelectedPath))
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    //filePath = openFileDialog.FileName;
-                    //string folderpathtest = Path.GetDirectoryName(filePath);
-                    //Console.WriteLine(folderpathtest);
                     
                     folderPath = dialog.FileName;
                     Console.WriteLine(folderPath);
@@ -74,15 +59,13 @@ namespace GradleCleaner
                     //Console.WriteLine(paths);
 
 
-                    //String strCmdLine = openFileDialog.FileName;
-
-                    string strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
-                    "WIfiList-teste\\gradlew.bat";
+                    //string strCmdLine = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
+                    //"WIfiList-teste\\gradlew.bat";
+                    String Gradle = "\\gradlew.bat";
                     Process proc = new Process();
-                    proc.StartInfo.WorkingDirectory = "C:\\Users\\LukasKock\\AndroidStudioProjects\\" +
-                    "WIfiList-teste\\";
-                    proc.StartInfo.FileName = strCmdLine;
-                    proc.StartInfo.Arguments = "build";
+                    proc.StartInfo.WorkingDirectory = folderPath;
+                    proc.StartInfo.FileName = folderPath + Gradle;
+                    proc.StartInfo.Arguments = "clean";
                     proc.StartInfo.UseShellExecute = false;
                     proc.StartInfo.RedirectStandardOutput = true;
                     proc.StartInfo.CreateNoWindow = true;
