@@ -31,7 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GradleClean = new System.Windows.Forms.ToolStripMenuItem();
+            this.GradleBuild = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,6 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.GradleBuild = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             // arquivoToolStripMenuItem
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirToolStripMenuItem,
+            this.GradleClean,
             this.GradleBuild,
             this.toolStripSeparator,
             this.toolStripSeparator1,
@@ -79,15 +79,23 @@
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
             this.arquivoToolStripMenuItem.Text = "&Arquivo";
             // 
-            // abrirToolStripMenuItem
+            // GradleClean
             // 
-            this.abrirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("abrirToolStripMenuItem.Image")));
-            this.abrirToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
-            this.abrirToolStripMenuItem.Text = "&Gradle Clean";
-            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
+            this.GradleClean.Image = ((System.Drawing.Image)(resources.GetObject("GradleClean.Image")));
+            this.GradleClean.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.GradleClean.Name = "GradleClean";
+            this.GradleClean.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.GradleClean.Size = new System.Drawing.Size(275, 34);
+            this.GradleClean.Text = "&Gradle Clean";
+            this.GradleClean.Click += new System.EventHandler(this.GradleClean_Click);
+            // 
+            // GradleBuild
+            // 
+            this.GradleBuild.Name = "GradleBuild";
+            this.GradleBuild.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.GradleBuild.Size = new System.Drawing.Size(275, 34);
+            this.GradleBuild.Text = "Gradle Build";
+            this.GradleBuild.Click += new System.EventHandler(this.GradleBuild_Click);
             // 
             // toolStripSeparator
             // 
@@ -125,7 +133,7 @@
             this.personalizarToolStripMenuItem,
             this.opçõesToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
-            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(125, 30);
+            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(125, 29);
             this.ferramentasToolStripMenuItem.Text = "Ferra&mentas";
             // 
             // personalizarToolStripMenuItem
@@ -149,7 +157,7 @@
             this.toolStripSeparator5,
             this.sobreToolStripMenuItem});
             this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(74, 30);
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
             this.ajudaToolStripMenuItem.Text = "Aj&uda";
             // 
             // conteúdoToolStripMenuItem
@@ -189,14 +197,6 @@
             this.textBox1.Size = new System.Drawing.Size(642, 160);
             this.textBox1.TabIndex = 1;
             // 
-            // GradleBuild
-            // 
-            this.GradleBuild.Name = "GradleBuild";
-            this.GradleBuild.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.GradleBuild.Size = new System.Drawing.Size(275, 34);
-            this.GradleBuild.Text = "Gradle Build";
-            this.GradleBuild.Click += new System.EventHandler(this.GradleBuild_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -221,7 +221,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem GradleClean;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
