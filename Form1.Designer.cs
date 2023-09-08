@@ -48,6 +48,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@
             // 
             // GradleBuild
             // 
-            this.GradleBuild.Image = ((System.Drawing.Image)(resources.GetObject("GradleClean.Image")));
+            this.GradleBuild.Image = ((System.Drawing.Image)(resources.GetObject("GradleBuild.Image")));
             this.GradleBuild.Name = "GradleBuild";
             this.GradleBuild.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.GradleBuild.Size = new System.Drawing.Size(275, 34);
@@ -198,12 +199,20 @@
             this.textBox1.Size = new System.Drawing.Size(642, 160);
             this.textBox1.TabIndex = 1;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(26, 225);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(642, 32);
+            this.progressBar1.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -239,6 +248,7 @@
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem GradleBuild;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

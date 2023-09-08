@@ -87,11 +87,15 @@ namespace GradleCleaner
                             outputLine = proc.StandardOutput.ReadLine();
                             textBox1.AppendText(outputLine);
                             textBox1.AppendText(Environment.NewLine);
+                            
+                            updateProgressBar(outputLine);
 
                             Console.WriteLine(outputLine);
                         }
                         proc.WaitForExit();
                         proc.Close();
+
+                        progressBar1.Value = 100;
 
                         textBox1.AppendText(Environment.NewLine);
 
@@ -104,5 +108,14 @@ namespace GradleCleaner
 
         }
 
+        private void updateProgressBar(String outputLine)
+        {
+            progressBar1.Value = 5;
+
+            if (outputLine.Contains("Starting a Gradle"))
+            {
+                progressBar1.Value = 50;
+            }
+        }
     }
 }
