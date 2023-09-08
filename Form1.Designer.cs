@@ -91,6 +91,7 @@
             // 
             // GradleBuild
             // 
+            this.GradleBuild.Image = ((System.Drawing.Image)(resources.GetObject("GradleClean.Image")));
             this.GradleBuild.Name = "GradleBuild";
             this.GradleBuild.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.GradleBuild.Size = new System.Drawing.Size(275, 34);
