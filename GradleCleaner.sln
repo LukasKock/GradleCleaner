@@ -5,16 +5,28 @@ VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradleCleaner", "GradleCleaner.csproj", "{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GradleCleanerSetup", "GradleCleanerSetup\GradleCleanerSetup.vdproj", "{EAABD535-85B9-414C-8B80-D3F6B0744214}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		DefaultBuild|Any CPU = DefaultBuild|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}.All|Any CPU.Build.0 = Release|Any CPU
 		{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
 		{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5E127A-4941-46F7-AA8E-FBF49CCA55D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAABD535-85B9-414C-8B80-D3F6B0744214}.All|Any CPU.ActiveCfg = Debug
+		{EAABD535-85B9-414C-8B80-D3F6B0744214}.Debug|Any CPU.ActiveCfg = Debug
+		{EAABD535-85B9-414C-8B80-D3F6B0744214}.DefaultBuild|Any CPU.ActiveCfg = Debug
+		{EAABD535-85B9-414C-8B80-D3F6B0744214}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
