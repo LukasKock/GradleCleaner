@@ -115,7 +115,6 @@ namespace GradleCleaner
                         }
                         else {
                             textBox1.AppendText(folderPath + ": This isn't a project folder");
-                            textBox1.AppendText("Unvalid Java version for " + folderPath);
                             progressBar1.Value = count * 100 / size;
                             count = count + 1;
                             textBox1.AppendText(Environment.NewLine);
