@@ -26,6 +26,7 @@ namespace GradleCleaner
         {
             InitializeComponent();
             textBox1.Enabled = false;
+            progressBar1.Value = 0;
 
             //int formWidth = this.Width;
             //if (formWidth < textBox1.Width + 100)
@@ -63,38 +64,43 @@ namespace GradleCleaner
                     textBox1.Enabled = true;
                     textBox1.Multiline = true;
                     textBox1.ScrollBars = ScrollBars.Both;
+                    progressBar1.Value = 0;
 
                     String Gradle = "\\gradlew.bat";
                     foreach (String folderPath in dialog.FileNames)
                     {
 
-                        //folderPath = dialog.FileName;
-                        Console.WriteLine(folderPath);
-                        Process proc = new Process();
-                        proc.StartInfo.WorkingDirectory = folderPath;
-                        proc.StartInfo.FileName = folderPath + Gradle;
-                        proc.StartInfo.Arguments = command;
-                        proc.StartInfo.UseShellExecute = false;
-                        proc.StartInfo.RedirectStandardOutput = true;
-                        proc.StartInfo.CreateNoWindow = true;
+                        if (File.Exists(folderPath + "\\build.gradle"))
+                        { 
+                            //folderPath = dialog.FileName;
+                            Console.WriteLine(folderPath);
+                            Process proc = new Process();
+                            proc.StartInfo.WorkingDirectory = folderPath;
+                            proc.StartInfo.FileName = folderPath + Gradle;
+                            proc.StartInfo.Arguments = command;
+                            proc.StartInfo.UseShellExecute = false;
+                            proc.StartInfo.RedirectStandardOutput = true;
+                            proc.StartInfo.CreateNoWindow = true;
 
+                            proc.Start();
+                            while (!proc.StandardOutput.EndOfStream)
+                            {
+                                outputLine = proc.StandardOutput.ReadLine();
+                                textBox1.AppendText(outputLine);
+                                textBox1.AppendText(Environment.NewLine);
+                            }
+                            proc.WaitForExit();
+                            proc.Close();
 
+                            progressBar1.Value = 100;
 
-
-                        proc.Start();
-                        while (!proc.StandardOutput.EndOfStream)
-                        {
-                            outputLine = proc.StandardOutput.ReadLine();
-                            textBox1.AppendText(outputLine);
-                            textBox1.AppendText(Environment.NewLine);                            
+                            textBox1.AppendText(Environment.NewLine);
+                        }
+                        else {
+                            textBox1.AppendText("This isn't a project folder");
+                            textBox1.AppendText(Environment.NewLine);
                         }
 
-                        proc.WaitForExit();
-                        proc.Close();
-
-                        progressBar1.Value = 100;
-
-                        textBox1.AppendText(Environment.NewLine);
 
 
                     }
