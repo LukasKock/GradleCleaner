@@ -67,9 +67,10 @@ namespace GradleCleaner
                     progressBar1.Value = 0;
 
                     String Gradle = "\\gradlew.bat";
+                    int count = 1;
                     foreach (String folderPath in dialog.FileNames)
                     {
-
+                        int size = dialog.FilesAsShellObject.Count;
                         if (File.Exists(folderPath + "\\build.gradle"))
                         {
                             //folderPath = dialog.FileName;
@@ -94,31 +95,36 @@ namespace GradleCleaner
                                 proc.WaitForExit();
                                 proc.Close();
 
-                                progressBar1.Value = 100;
-
+                                progressBar1.Value = count*100/size;
+                                count = count +1;
                                 textBox1.AppendText(Environment.NewLine);
+                                textBox1.AppendText("-------------------------------------------------------------------------");
+                                textBox1.AppendText(Environment.NewLine);
+
                             }
                             else {
-                                textBox1.AppendText("Unvalid Java version for " + folderPath);
-                                textBox1.AppendText(Environment.NewLine);
                                 proc.Close();
+                                textBox1.AppendText("Unvalid Java version for " + folderPath);
+                                progressBar1.Value = count * 100 / size;
+                                count = count + 1;
+                                textBox1.AppendText(Environment.NewLine);
+                                textBox1.AppendText("-------------------------------------------------------------------------");
+                                textBox1.AppendText(Environment.NewLine);
 
                             }
                         }
                         else {
-                            textBox1.AppendText("This isn't a project folder");
+                            textBox1.AppendText(folderPath + ": This isn't a project folder");
+                            textBox1.AppendText("Unvalid Java version for " + folderPath);
+                            progressBar1.Value = count * 100 / size;
+                            count = count + 1;
+                            textBox1.AppendText(Environment.NewLine);
+                            textBox1.AppendText("-------------------------------------------------------------------------");
                             textBox1.AppendText(Environment.NewLine);
                         }
-
-
-
                     }
-
-
                 }
             }
-
         }
-
     }
 }
