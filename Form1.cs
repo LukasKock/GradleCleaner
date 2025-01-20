@@ -83,7 +83,7 @@ namespace GradleCleaner
                             proc.StartInfo.CreateNoWindow = true;
 
                             proc.Start();
-                            if (proc.ExitCode == 0)
+                            if (proc.StandardOutput.EndOfStream != true)
                             {
                                 while (!proc.StandardOutput.EndOfStream)
                                 {
