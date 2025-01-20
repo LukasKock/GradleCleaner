@@ -71,7 +71,7 @@ namespace GradleCleaner
                     {
 
                         if (File.Exists(folderPath + "\\build.gradle"))
-                        { 
+                        {
                             //folderPath = dialog.FileName;
                             Console.WriteLine(folderPath);
                             Process proc = new Process();
@@ -83,18 +83,27 @@ namespace GradleCleaner
                             proc.StartInfo.CreateNoWindow = true;
 
                             proc.Start();
-                            while (!proc.StandardOutput.EndOfStream)
+                            if (proc.ExitCode == 0)
                             {
-                                outputLine = proc.StandardOutput.ReadLine();
-                                textBox1.AppendText(outputLine);
+                                while (!proc.StandardOutput.EndOfStream)
+                                {
+                                    outputLine = proc.StandardOutput.ReadLine();
+                                    textBox1.AppendText(outputLine);
+                                    textBox1.AppendText(Environment.NewLine);
+                                }
+                                proc.WaitForExit();
+                                proc.Close();
+
+                                progressBar1.Value = 100;
+
                                 textBox1.AppendText(Environment.NewLine);
                             }
-                            proc.WaitForExit();
-                            proc.Close();
+                            else {
+                                textBox1.AppendText("Unvalid Java version for " + folderPath);
+                                textBox1.AppendText(Environment.NewLine);
+                                proc.Close();
 
-                            progressBar1.Value = 100;
-
-                            textBox1.AppendText(Environment.NewLine);
+                            }
                         }
                         else {
                             textBox1.AppendText("This isn't a project folder");
