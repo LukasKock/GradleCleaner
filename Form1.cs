@@ -71,7 +71,7 @@ namespace GradleCleaner
                     foreach (String folderPath in dialog.FileNames)
                     {
                         int size = dialog.FilesAsShellObject.Count;
-                        if (File.Exists(folderPath + "\\build.gradle"))
+                        if (File.Exists(folderPath + "\\gradlew.bat"))
                         {
                             //folderPath = dialog.FileName;
                             Console.WriteLine(folderPath);
