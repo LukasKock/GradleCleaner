@@ -36,7 +36,6 @@
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label_processbar = new System.Windows.Forms.Label();
@@ -62,11 +61,10 @@
             this.GradleBuild,
             this.toolStripSeparator,
             this.toolStripSeparator1,
-            this.toolStripSeparator2,
-            this.sairToolStripMenuItem});
+            this.toolStripSeparator2});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
-            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
-            this.arquivoToolStripMenuItem.Text = "&Arquivo";
+            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+            this.arquivoToolStripMenuItem.Text = "&File";
             // 
             // GradleClean
             // 
@@ -101,12 +99,6 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(272, 6);
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
-            this.sairToolStripMenuItem.Text = "Sai&r";
             // 
             // textBox1
             // 
@@ -161,7 +153,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem GradleBuild;
         private System.Windows.Forms.ProgressBar progressBar1;
