@@ -49,6 +49,7 @@
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label_processbar = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -77,7 +78,7 @@
             this.toolStripSeparator2,
             this.sairToolStripMenuItem});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
-            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
+            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(91, 32);
             this.arquivoToolStripMenuItem.Text = "&Arquivo";
             // 
             // GradleClean
@@ -135,7 +136,7 @@
             this.personalizarToolStripMenuItem,
             this.opçõesToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
-            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(125, 29);
+            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(125, 32);
             this.ferramentasToolStripMenuItem.Text = "Ferra&mentas";
             // 
             // personalizarToolStripMenuItem
@@ -159,7 +160,7 @@
             this.toolStripSeparator5,
             this.sobreToolStripMenuItem});
             this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(74, 32);
             this.ajudaToolStripMenuItem.Text = "Aj&uda";
             // 
             // conteúdoToolStripMenuItem
@@ -196,22 +197,31 @@
             this.textBox1.Location = new System.Drawing.Point(26, 59);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(642, 160);
+            this.textBox1.Size = new System.Drawing.Size(1112, 425);
             this.textBox1.TabIndex = 1;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(26, 225);
+            this.progressBar1.Location = new System.Drawing.Point(26, 532);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(642, 32);
             this.progressBar1.TabIndex = 2;
+            // 
+            // label_processbar
+            // 
+            this.label_processbar.AutoSize = true;
+            this.label_processbar.Location = new System.Drawing.Point(26, 506);
+            this.label_processbar.Name = "label_processbar";
+            this.label_processbar.Size = new System.Drawing.Size(0, 20);
+            this.label_processbar.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1184, 606);
+            this.Controls.Add(this.label_processbar);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
@@ -249,6 +259,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem GradleBuild;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label_processbar;
     }
 }
 

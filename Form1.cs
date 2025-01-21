@@ -27,12 +27,7 @@ namespace GradleCleaner
             InitializeComponent();
             textBox1.Enabled = false;
             progressBar1.Value = 0;
-
-            //int formWidth = this.Width;
-            //if (formWidth < textBox1.Width + 100)
-            //{
-            //    textBox1.Width = formWidth;
-            //}
+            label_processbar.Text = "";
         }
 
         private void GradleClean_Click(object sender, EventArgs e)
@@ -70,11 +65,18 @@ namespace GradleCleaner
                     int count = 1;
                     foreach (String folderPath in dialog.FileNames)
                     {
+                        label_processbar.Text = "Initializing" + command + ":";
+                        label_processbar.Update();
                         int size = dialog.FilesAsShellObject.Count;
                         if (File.Exists(folderPath + "\\gradlew.bat"))
                         {
-                            //folderPath = dialog.FileName;
-                            Console.WriteLine(folderPath);
+                            textBox1.AppendText("Tryng to " + command + " the following folder:");
+                            textBox1.AppendText(Environment.NewLine);
+                            textBox1.AppendText(folderPath);
+                            textBox1.AppendText(Environment.NewLine);
+                            label_processbar.Text = "Folder: " + folderPath;
+                            label_processbar.Update();
+                            
                             Process proc = new Process();
                             proc.StartInfo.WorkingDirectory = folderPath;
                             proc.StartInfo.FileName = folderPath + Gradle;
@@ -96,6 +98,7 @@ namespace GradleCleaner
                                 proc.Close();
 
                                 progressBar1.Value = count*100/size;
+                                progressBar1.Update();
                                 count = count +1;
                                 textBox1.AppendText(Environment.NewLine);
                                 textBox1.AppendText("-------------------------------------------------------------------------");
@@ -106,6 +109,7 @@ namespace GradleCleaner
                                 proc.Close();
                                 textBox1.AppendText("Unvalid Java version for " + folderPath);
                                 progressBar1.Value = count * 100 / size;
+                                progressBar1.Update();
                                 count = count + 1;
                                 textBox1.AppendText(Environment.NewLine);
                                 textBox1.AppendText("-------------------------------------------------------------------------");
@@ -116,12 +120,14 @@ namespace GradleCleaner
                         else {
                             textBox1.AppendText(folderPath + ": This isn't a project folder");
                             progressBar1.Value = count * 100 / size;
+                            progressBar1.Update();
                             count = count + 1;
                             textBox1.AppendText(Environment.NewLine);
                             textBox1.AppendText("-------------------------------------------------------------------------");
                             textBox1.AppendText(Environment.NewLine);
                         }
                     }
+                    label_processbar.Text = "Processed Completed";
                 }
             }
         }
